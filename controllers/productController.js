@@ -184,28 +184,6 @@ async function stockAlert(req, res, next) {
 }
 
 
-<<<<<<< HEAD
-
-=======
-async function getAIProductDescription(req, res,next) {
-  try {
-    const product = await Product.findById(req.params.id);
-
-    if (!product)return next(new AppError('product not found',404));
-    const aiDescription = await generateProductDescription(product);
- product.description=aiDescription;
- await product.save()
-    res.status(200).json({
-      productId: product._id,
-      aiDescription,
-    });
-  } catch (error) {
-    console.error(error);
-    next(error);
-  }
-}
-
-
 async function rankedSearch(req, res,next) {
   try{
     
