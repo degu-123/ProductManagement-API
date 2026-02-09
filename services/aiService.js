@@ -101,6 +101,7 @@ return tags;
     throw new Error('Invalid AI tag format');
   }
 };
+
 //get embedding for get similar
 function extractJsonArray(text) {
   const match = text.match(/\[[\s\S]*\]/);

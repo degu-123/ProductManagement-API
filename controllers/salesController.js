@@ -71,6 +71,7 @@ if (req.query.to && isNaN(new Date(req.query.to))) {
     const [sales,totalSales]=await Promise.all([
       Sale.find(filter)
       .populate('product','name category stock sku tags')
+
       .populate('soldBy','name email')
       .sort({soldAt:-1})
       .skip(skip)

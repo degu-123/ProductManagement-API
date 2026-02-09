@@ -4,6 +4,7 @@ function getMaxBy(arr, key) {
 function getMinBy(arr, key) {
   return arr.reduce((min, item) => item[key] < min[key] ? item : min);
 }
+
 function summarizeSales(sales) {
   const map = {};
 
@@ -71,3 +72,4 @@ Return ONLY valid JSON:
 }
 
 module.exports ={getMaxBy,getMinBy,summarizeSales,buildOwnerPrompt};
+

@@ -46,7 +46,9 @@ async function Login_User(req,res,next){
   const hashedToken=await hashToken(refreshToken);
   user.refreshToken=hashedToken;
   await user.save();
+
   user.password = undefined
+
   res.status(200).json({
     message:'Well Come your page',
     accessToken:accessToken,

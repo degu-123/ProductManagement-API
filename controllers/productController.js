@@ -36,6 +36,7 @@ async function uploadProduct(req,res,next){
       stock,
       owner:req.user.id
     });
+
     const aiDescription = await generateProductDescription({name,
       category,
       sellingPrice
@@ -58,7 +59,7 @@ async function uploadProduct(req,res,next){
    product.tags=aiTags;
    product.embedding=embedding;
    await product.save()
-   
+
     res.status(201).json({
       message:'product created successfully ',
       product:product
@@ -183,6 +184,27 @@ async function stockAlert(req, res, next) {
 }
 
 
+<<<<<<< HEAD
+
+=======
+async function getAIProductDescription(req, res,next) {
+  try {
+    const product = await Product.findById(req.params.id);
+
+    if (!product)return next(new AppError('product not found',404));
+    const aiDescription = await generateProductDescription(product);
+ product.description=aiDescription;
+ await product.save()
+    res.status(200).json({
+      productId: product._id,
+      aiDescription,
+    });
+  } catch (error) {
+    console.error(error);
+    next(error);
+  }
+}
+
 
 async function rankedSearch(req, res,next) {
   try{
@@ -204,6 +226,8 @@ async function rankedSearch(req, res,next) {
     next(err)
   }
 }
+
+
  async function aiOwnerAdvice(req, res, next) {
   try {
     
@@ -268,8 +292,8 @@ async function semanticSearch(req, res,next) {
   }
 }
 
-
-module.exports ={uploadProduct,updateProduct,getProducts,
+module.exports ={uploadProduct,
+updateProduct,getProducts,
   getProduct,deleteProduct,
   stockAlert,
   rankedSearch,

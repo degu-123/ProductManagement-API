@@ -2,6 +2,7 @@ const express=require('express');
 const router=express.Router();
 const {uploadProductValidation,updateProductValidation}=require('../middlewares/productValidate');
 const {uploadProduct,updateProduct,getProduct,getProducts,
+
   deleteProduct,stockAlert,
   rankedSearch,
   aiOwnerAdvice,
